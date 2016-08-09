@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
             build: {
-                src: 'src/js/*.js',
+                src: ['src/js/*.js', 'node_modules/bootstrap/dist/js/bootstrap.js'],
                 dest: 'js/script.min.js'
             },
             dev: {
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
                     compress: false,
                     preserveComments: 'all'
                 },
-                src: 'src/js/*.js',
+                src: ['src/js/*.js', 'node_modules/bootstrap/dist/js/bootstrap.js'],
                 dest: 'js/script.min.js'
             }
         },
@@ -28,15 +28,16 @@ module.exports = function (grunt) {
                     outputStyle: 'expanded'
                 },
                 files: {
-                    'css/styles.css' : 'src/less/app.less'
+                    'css/styles.css' : ['src/less/app.less', 'src/less/base/bootstrap.less']
                 }
             },
             build: {
                 options: {
-                    outputStyle: 'compressed'
+                    outputStyle: 'compressed',
+                    compress: true,
                 },
                 files: {
-                    'css/styles.css' : 'src/less/app.less'
+                    'css/styles.css' : ['src/less/app.less', 'src/less/base/bootstrap.less']
                 }
             }
         },
