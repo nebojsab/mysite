@@ -1,6 +1,6 @@
 {
   "name": "mysite",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "My Site",
   "main": "index.html",
   "dependencies": {
@@ -10,6 +10,7 @@
     "grunt-contrib-less": "^1.3.0",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-gh-pages": "^2.0.0",
     "grunt-less": "^0.1.7"
   },
   "scripts": {
