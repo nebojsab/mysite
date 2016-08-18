@@ -34,10 +34,17 @@ module.exports = function (grunt) {
             build: {
                 options: {
                     outputStyle: 'compressed',
-                    compress: true,
+                    compress: true
                 },
                 files: {
                     'css/styles.css' : ['src/less/app.less', 'src/less/base/bootstrap.less']
+                }
+            }
+        },
+        autoprefixer: {
+            dist: {
+                files: {
+                    'css/styles.css': 'css/styles.css'
                 }
             }
         },
@@ -49,17 +56,22 @@ module.exports = function (grunt) {
             css: {
                 files: ['src/less/*.less','src/less/**/*.less'],
                 tasks: ['less:dev']
+            },
+            styles: {
+                files: ['styles.css'],
+                tasks: ['autoprefixer']
             }
         }
     });
 
     //Load the plugins
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     //Register task(s)
-    grunt.registerTask('default', ['uglify:dev', 'less:dev']);
-    grunt.registerTask('build', ['uglify:build', 'less:build']);
+    grunt.registerTask('default', ['uglify:dev', 'less:dev', 'autoprefixer']);
+    grunt.registerTask('build', ['uglify:build', 'less:build', 'autoprefixer']);
 
 };
